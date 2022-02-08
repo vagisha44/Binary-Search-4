@@ -1,1 +1,44 @@
 -searching a word in array of strings with empty characters and  different words, find the word and return its index
+def sparsesearch(List,char):
+    left=0
+    right=len(List)-1
+    
+    while left<right:
+        
+        mid=left+(right-left)//2
+        
+        if List[mid]=='':
+            l=mid-1
+            r=mid+1
+            flag=0
+            while l>0 and r<len(List):
+                
+                
+                if List[l]!='':
+                    
+                    mid=l
+                    flag=1
+                    break
+                elif List[r]!='':
+                    
+                    mid=r
+                    flag=1
+                    break
+                l-=1
+                r+=1
+            if flag==0:
+                
+                
+                return -1
+            
+        if List[mid]==char:
+            return mid
+        elif List[mid]<char:
+            left=mid+1
+        else:
+            right=mid-1
+    print('en')
+    return -1
+
+print(sparsesearch(["for", "geeks", "", "", "", "", "ide",
+           "practice", "", "", "", "quiz"] ,'geeks'))
